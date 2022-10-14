@@ -6,7 +6,7 @@
 body{
     background-color:black;
     color: white;
-   
+    
 }
 #app {
     width: 100%;
@@ -15,7 +15,6 @@ body{
     justify-content: center;
     align-items: center;
     border: solid 1px;
-  
     
 }
 
@@ -29,4 +28,18 @@ img{
 .contenedor{
     text-align: center;
     margin: 10px;
+    font-size: x-large;
+}
+
+input{
+    padding: 15px;
+    border-radius: 5px;
+}
+button{
+    padding: 15px;
+    border-radius:5px ;
+    width: 150px;
+}
+button:hover{
+    background-color:brown;
 }
