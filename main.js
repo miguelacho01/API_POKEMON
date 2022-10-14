@@ -66,20 +66,23 @@ const abilities = document.querySelector('#abilities')
 async function buscarPokemon() {
     const nombre = document.querySelector('.buscar').value
     const respuesta = await fetch(api + nombre)
-    const datos = await respuesta.json()
-    console.log(datos)
+   
+    
+    
+    if(nombre === ''  || respuesta.status === 404){
+        alert('Ingresa un pokemon')
 
-    
-    for(i=0;i<datos.abilities.length;i++){
-        habilidades=`${datos.abilities[i].ability.name}`
+    }else{
+        const datos = await respuesta.json()
+        for(i=0;i<datos.abilities.length;i++){
+            habilidades=`${datos.abilities[i].ability.name}`
+        }
+        
+        img.innerHTML = `<img src="${datos.sprites.front_default}" ><p><b>Nombre: </b>${datos.name}</p>
+        <p><b>Habilidades:</b>${habilidades}</p>
+        <p> <b>Experiencia base:</b> ${datos.base_experience}</p>
+        <p><b>Movimiento:</b> ${datos.moves[0].move.name}</p>`
     }
-    
-    img.innerHTML = `<img src="${datos.sprites.front_default}" ><p><b>Nombre: </b>${datos.name}</p>
-    <p><b>Habilidades:</b>${habilidades}</p>
-    <p> <b>Experiencia base:</b> ${datos.base_experience}</p>
-    <p><b>Movimiento:</b> ${datos.moves[0].move.name}</p>
-    
-`
 
 }
 const boton = document.querySelector('.boton')
